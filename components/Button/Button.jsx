@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
+
 import {
   mainVariants,
   lighten,
@@ -10,13 +11,9 @@ import {
   ifElse,
   when
 } from "../../themes/helpers";
+import { colorVariants } from "../../themes/commonVariants";
 
-const { btnColor, btnColorPropTypes } = mainVariants("btnColor", {
-  default: props => props.theme.main.colors.baseColor,
-  success: "green",
-  danger: "red",
-  warning: "orange"
-});
+const { btnColor, btnColorPropTypes } = mainVariants("btnColor", colorVariants);
 
 const { btnSize, btnSizePropTypes } = mainVariants("btnSize", {
   small: "font-size: 0.75em;",
