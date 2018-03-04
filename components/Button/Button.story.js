@@ -6,20 +6,15 @@ import centerDecorator from "../../.storybook/decorators/centerDecorator";
 
 import Button from "./Button";
 
-storiesOf("Button", module)
+storiesOf("Buttons", module)
   .addDecorator(withKnobs)
   .addDecorator(centerDecorator)
-  .add("Props", () => {
+  .add("Button", () => {
     const colorOpts = {
       default: "default",
       success: "success",
       danger: "danger",
       warning: "warning"
-    };
-
-    const styleOpts = {
-      transparent: "transparent",
-      filled: "filled"
     };
 
     const sizeOpts = {
@@ -28,11 +23,17 @@ storiesOf("Button", module)
       "large": "large"
     };
 
+    const styleOpts = {
+      filled: "filled",
+      outlined: "outlined"
+    }
+
     const props = {
       btnColor: select("btnColor", colorOpts, "default", "gp1"),
-      btnStyle: select("btnStyle", styleOpts, "transparent", "gp1"),
       btnSize: select("btnSize", sizeOpts, "normal", "gp1"),
-      active: boolean("active", false, "gp1")
+      btnStyle: select("btnStyle", styleOpts, "outlined", "gp1"),
+      active: boolean("active", false, "gp1"),
+      disabled: boolean("disabled", false, "gp1")
     };
 
     const btnText = text("Button text", "Button", "gp2");
