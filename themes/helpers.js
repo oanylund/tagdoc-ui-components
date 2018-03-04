@@ -3,7 +3,7 @@ import { css } from "styled-components";
 import PropTypes from "prop-types";
 import Color from "color";
 
-export const mainVariants = (kind, variants) => {
+export const mainVariants = (kind, variants, exportPropTypes) => {
   const variantKeys = Object.keys(variants);
   const mainVariants = variantKeys.reduce((acc, variantKey) => {
     return {
@@ -13,6 +13,9 @@ export const mainVariants = (kind, variants) => {
       }
     };
   }, {});
+
+  if (exportPropTypes !== true)
+    return themes.variants("mode", kind, mainVariants);
 
   return {
     [kind]: themes.variants("mode", kind, mainVariants),

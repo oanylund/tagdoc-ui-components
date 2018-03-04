@@ -13,7 +13,7 @@ import {
 } from "../../themes/helpers";
 import { colorVariants } from "../../themes/commonVariants";
 
-const { btnColor, btnColorPropTypes } = mainVariants("btnColor", colorVariants);
+const { btnColor, btnColorPropTypes } = mainVariants("btnColor", colorVariants, true);
 
 const { btnSize, btnSizePropTypes } = mainVariants("btnSize", {
   small: "font-size: 0.75em;",
@@ -25,7 +25,7 @@ const { btnSize, btnSizePropTypes } = mainVariants("btnSize", {
     font-size: 1em;
     padding: 10px 15px;
   `
-});
+}, true);
 
 const btnLightColor = compose2(lighten(0.2), btnColor);
 const btnDarkColor = compose2(darken(0.2), btnColor);
@@ -79,7 +79,7 @@ const { btnStyle, btnStylePropTypes } = mainVariants("btnStyle", {
       color: ${btnDisabledColor};
     }
   `
-});
+}, true);
 
 const Button = styled.button`
   font-family: roboto-regular, sans-serif;
