@@ -30,6 +30,12 @@ export const darken = val => color =>
     .darken(val)
     .hex();
 
+export const disabledColor = color => 
+  Color(color)
+    .desaturate(0.5)
+    .lighten(0.2)
+    .hex()
+
 export const compose2 = (a, b) => c => a(b(c));
 
 export const ifElse = predicate => (tru, fals) => props =>
