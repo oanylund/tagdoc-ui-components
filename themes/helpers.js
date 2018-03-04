@@ -23,6 +23,8 @@ export const mainVariants = (kind, variants, exportPropTypes) => {
   };
 };
 
+export const mainBaseColor = props => props.theme.main.colors.baseColor;
+
 export const lighten = val => color =>
   Color(color)
     .lighten(val)
@@ -33,11 +35,11 @@ export const darken = val => color =>
     .darken(val)
     .hex();
 
-export const disabledColor = color => 
+export const disabledColor = color =>
   Color(color)
     .desaturate(0.5)
     .lighten(0.2)
-    .hex()
+    .hex();
 
 export const compose2 = (a, b) => c => a(b(c));
 
