@@ -15,16 +15,10 @@ import { colorVariants } from "../../themes/commonVariants";
 
 const { btnColor, btnColorPropTypes } = mainVariants("btnColor", colorVariants, true);
 
-const { btnSize, btnSizePropTypes } = mainVariants("btnSize", {
-  small: "font-size: 0.75em;",
-  normal: `
-    font-size: 0.8em;
-    padding: 8px 10px;
-  `,
-  large: `
-    font-size: 1em;
-    padding: 10px 15px;
-  `
+const { btnSize: fontSize, btnSizePropTypes } = mainVariants("btnSize", {
+  small: "0.6em",
+  normal: "0.8em",
+  large: "1em"
 }, true);
 
 const btnLightColor = compose2(lighten(0.2), btnColor);
@@ -83,7 +77,9 @@ const { btnStyle, btnStylePropTypes } = mainVariants("btnStyle", {
 
 const Button = styled.button`
   font-family: roboto-regular, sans-serif;
+  font-size: ${fontSize};
   border-width: 1px;
+  padding: 0.625em 0.935em;
   border-style: solid;
   cursor: pointer;
   text-transform: uppercase;
@@ -94,8 +90,6 @@ const Button = styled.button`
     cursor: default;
     pointer-events: none;
   }
-
-  ${btnSize} 
   ${btnStyle}
 `;
 
