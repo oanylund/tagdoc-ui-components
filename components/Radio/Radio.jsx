@@ -14,11 +14,12 @@ const RadioStyled = styled.div`
 class Radio extends Component {
   constructor(props) {
     super(props);
-    this.radioId = `radio-${nextId}`;
+    this.radioId = `radio-${nextId++}`;
     this._handleChange = this._handleChange.bind(this);
   }
   _handleChange(e) {
-    this.props.onChange(this.props.value);
+    if(this.props.onChange)
+      this.props.onChange(this.props.value);
   }
   render() {
     const {
@@ -53,7 +54,7 @@ Radio.propTypes = {
   disabled: PropTypes.bool,
   text: PropTypes.string,
   value: PropTypes.any,
-  groupName: PropTypes.string.isRequired,
+  groupName: PropTypes.string,
   onChange: PropTypes.func,
   //Variants
   size: PropTypes.oneOf(["small", "normal", "large"]),
@@ -61,6 +62,8 @@ Radio.propTypes = {
 };
 
 Radio.defaultProps = {
+  checked: false,
+  disabled: false,
   size: "normal",
   radioColor: "default"
 };
