@@ -8,72 +8,75 @@ import {
   darken,
   disabledColor,
   compose2,
-  ifElse,
-  when
+  ifElse
 } from "../../themes/helpers";
 import { colorVariants } from "../../themes/commonVariants";
 
-const { btnColor, btnColorPropTypes } = mainVariants("btnColor", colorVariants, true);
+const { btnColor, btnColorPropTypes } = mainVariants(
+  "btnColor",
+  colorVariants,
+  true
+);
 
-const { btnSize: fontSize, btnSizePropTypes } = mainVariants("btnSize", {
-  small: "0.6em",
-  normal: "0.8em",
-  large: "1em"
-}, true);
+const { btnSize: fontSize, btnSizePropTypes } = mainVariants(
+  "btnSize",
+  {
+    small: "0.6em",
+    normal: "0.8em",
+    large: "1em"
+  },
+  true
+);
 
 const btnLightColor = compose2(lighten(0.2), btnColor);
 const btnDarkColor = compose2(darken(0.2), btnColor);
 const btnDisabledColor = compose2(disabledColor, btnColor);
 
 const ifActiveOrElse = ifElse(p => p.active);
-const onlyWhenNotActive = when(p => !p.active);
 
-const { btnStyle, btnStylePropTypes } = mainVariants("btnStyle", {
-  filled: css`
-    background-color: ${ifActiveOrElse(btnDarkColor, btnColor)};
-    border-color: ${ifActiveOrElse(btnDarkColor, btnColor)};
-    color: white;
+const { btnStyle: backGroundColor, btnStylePropTypes } = mainVariants(
+  "btnStyle",
+  {
+    filled: ifActiveOrElse(btnDarkColor, btnColor),
+    outlined: "transparent"
+  },
+  true
+);
 
-    ${onlyWhenNotActive`
-    &:hover {
-        background-color: ${btnLightColor};
-        border-color: ${btnLightColor};
-    }
-  `} &:active {
-      background-color: ${btnDarkColor};
-      border-color: ${btnDarkColor};
-    }
+const backGroundColorHovered = mainVariants("btnStyle", {
+  filled: ifActiveOrElse(btnDarkColor, btnLightColor),
+  outlined: "transparent"
+});
 
-    &:disabled {
-      background-color: ${btnDisabledColor};
-      border-color: ${btnDisabledColor};
-    }
-  `,
+const backGroundColorActive = mainVariants("btnStyle", {
+  filled: btnDarkColor,
+  outlined: "transparent"
+});
 
-  outlined: css`
-    background-color: transparent;
-    border-color: ${ifActiveOrElse(btnDarkColor, btnColor)};
-    color: ${ifActiveOrElse(btnDarkColor, btnColor)};
+const backGroundColorDisabled = mainVariants("btnStyle", {
+  filled: btnDisabledColor,
+  outlined: "transparent"
+});
 
-    ${onlyWhenNotActive`
-    &:hover {
-      border-color: ${btnLightColor};
-      background-color: transparent;
-      color: ${btnLightColor};
-    }
-  `} &:active {
-      border-color: ${btnDarkColor};
-      background-color: transparent;
-      color: ${btnDarkColor};
-    }
+const color = mainVariants("btnStyle", {
+  filled: "white",
+  outlined: ifActiveOrElse(btnDarkColor, btnColor)
+});
 
-    &:disabled {
-      border-color: ${btnDisabledColor};
-      background-color: transparent;
-      color: ${btnDisabledColor};
-    }
-  `
-}, true);
+const colorHovered = mainVariants("btnStyle", {
+  filled: "white",
+  outlined: ifActiveOrElse(btnDarkColor, btnLightColor)
+});
+
+const colorActive = mainVariants("btnStyle", {
+  filled: "white",
+  outlined: btnDarkColor
+});
+
+const colorDisabled = mainVariants("btnStyle", {
+  filled: "white",
+  outlined: btnDisabledColor
+});
 
 const Button = styled.button`
   font-family: roboto-regular, sans-serif;
@@ -86,11 +89,31 @@ const Button = styled.button`
   display: inline-flex;
   justify-content: center;
   align-items: center;
+
+  background-color: ${backGroundColor};
+  border-color: ${ifActiveOrElse(btnDarkColor, btnColor)};
+  color: ${color};
+
+  &:hover {
+    background-color: ${backGroundColorHovered};
+    border-color: ${ifActiveOrElse(btnDarkColor, btnLightColor)};
+    color: ${colorHovered};
+  }
+
+  &:active {
+    background-color: ${backGroundColorActive};
+    border-color: ${btnDarkColor};
+    color: ${colorActive};
+  }
+
   &:disabled {
+    background-color: ${backGroundColorDisabled};
+    border-color: ${btnDisabledColor};
+    color: ${colorDisabled};
+
     cursor: default;
     pointer-events: none;
   }
-  ${btnStyle}
 `;
 
 Button.propTypes = {
