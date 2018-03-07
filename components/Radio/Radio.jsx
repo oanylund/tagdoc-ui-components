@@ -49,7 +49,7 @@ class Radio extends Component {
   }
 }
 
-Radio.propTypes = {
+export const radioPropTypes = {
   checked: PropTypes.bool,
   disabled: PropTypes.bool,
   text: PropTypes.string,
@@ -60,6 +60,8 @@ Radio.propTypes = {
   size: PropTypes.oneOf(["small", "normal", "large"]),
   radioColor: PropTypes.oneOf(["default", "success", "danger", "warning"])
 };
+
+Radio.propTypes = radioPropTypes;
 
 Radio.defaultProps = {
   checked: false,
