@@ -1,1 +1,1 @@
-export const thisOrThat = (thisOne, thatOne) => (thisOne ? thisOne : thatOne);
+export const notUndefOrElse = (thisOne, thatOne) => (thisOne !== undefined ? thisOne : thatOne);
