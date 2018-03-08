@@ -17,10 +17,10 @@ export const mainVariants = (kind, variants, exportPropTypes) => {
   if (exportPropTypes !== true)
     return themes.variants("mode", kind, mainVariants);
 
-  return {
-    [kind]: themes.variants("mode", kind, mainVariants),
-    [`${kind}PropTypes`]: PropTypes.oneOf(variantKeys)
-  };
+  return [
+    themes.variants("mode", kind, mainVariants),
+    PropTypes.oneOf(variantKeys)
+  ];
 };
 
 export const mainBaseColor = props => props.theme.main.colors.baseColor;

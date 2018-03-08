@@ -12,13 +12,13 @@ import { compose2, ifElse } from "../../utils";
 
 import { colorVariants } from "../../themes/commonVariants";
 
-const { btnColor, btnColorPropTypes } = mainVariants(
+const [btnColor, btnColorPropTypes] = mainVariants(
   "btnColor",
   colorVariants,
   true
 );
 
-const { btnSize: fontSize, btnSizePropTypes } = mainVariants(
+const [fontSize, btnSizePropTypes] = mainVariants(
   "btnSize",
   {
     small: "0.6em",
@@ -34,7 +34,7 @@ const btnDisabledColor = compose2(disabledColor, btnColor);
 
 const ifActiveOrElse = ifElse(p => p.active);
 
-const { btnStyle: backGroundColor, btnStylePropTypes } = mainVariants(
+const [backGroundColor, btnStylePropTypes] = mainVariants(
   "btnStyle",
   {
     filled: ifActiveOrElse(btnDarkColor, btnColor),
