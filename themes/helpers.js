@@ -23,8 +23,6 @@ export const mainVariants = (kind, variants, exportPropTypes) => {
   ];
 };
 
-export const mainBaseColor = props => props.theme.main.colors.baseColor;
-
 export const lighten = val => color =>
   Color(color)
     .lighten(val)

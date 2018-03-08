@@ -1,13 +1,9 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import {
-  darken,
-  lighten,
-  mainBaseColor,
-  mainVariants
-} from "../../themes/helpers";
+import { darken, lighten, mainVariants } from "../../themes/helpers";
 import { compose2 } from "../../utils";
 import { colorVariants } from "../../themes/commonVariants";
+import { mainBaseColor } from "../../themes/selectors";
 
 import RadioInput from "./RadioInput";
 
