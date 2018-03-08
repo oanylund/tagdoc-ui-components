@@ -3,18 +3,26 @@ import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 import { notUndefOrElse } from "../../utils";
 import Radio, { radioPropTypes } from "../Radio/Radio";
+import { mainVariants } from "../../themes/helpers";
+
+const orientationStyle = mainVariants("orientation", {
+  vertical: css``,
+  horizontal: css`
+    & > li {
+      float: left;
+    }
+
+    & > li:not(:first-child) {
+      margin-left: 1em;
+    }
+  `
+});
 
 const RadioGroupStyled = styled.ul`
   padding: 0;
+  margin: 0;
   list-style: none;
-
-  /* & > li {
-    float: left;
-  }
-
-  & > li:not(:first-child) {
-    margin-left: 1em;
-  } */
+  ${orientationStyle};
 `;
 
 class RadioGroup extends Component {
@@ -40,13 +48,11 @@ class RadioGroup extends Component {
     };
   }
   renderOptions() {
-    return (
-      <li>
-        {this.props.options.map((option, i) => (
-          <Radio key={i} {...{ ...option, ...this.getRadioProps(option) }} />
-        ))}
+    return this.props.options.map((option, i) => (
+      <li key={i}>
+        <Radio {...{ ...option, ...this.getRadioProps(option) }} />
       </li>
-    );
+    ));
   }
   renderChildren() {
     return React.Children.map(this.props.children, radio => (
@@ -55,7 +61,7 @@ class RadioGroup extends Component {
   }
   render() {
     return (
-      <RadioGroupStyled>
+      <RadioGroupStyled orientation={this.props.orientation}>
         {this.props.options ? this.renderOptions() : this.renderChildren()}
       </RadioGroupStyled>
     );
@@ -77,6 +83,7 @@ RadioGroup.propTypes = {
     )
   ]),
   options: PropTypes.arrayOf(PropTypes.shape(radioPropTypes)),
+  orientation: PropTypes.oneOf(["vertical", "horizontal"]),
   // Radio variants that will override child styles if set
   size: radioPropTypes.size,
   radioColor: radioPropTypes.radioColor,
@@ -87,7 +94,8 @@ RadioGroup.defaultProps = {
   selectedValue: undefined,
   size: undefined,
   radioColor: undefined,
-  disabled: undefined
+  disabled: undefined,
+  orientation: "vertical"
 };
 
 export default RadioGroup;

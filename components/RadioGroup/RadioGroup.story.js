@@ -38,19 +38,32 @@ const colorOpts = {
   warning: "warning"
 };
 
+const orientationOpts = {
+  vertical: "vertical",
+  horizontal: "horizontal"
+};
+
+const overrideProps = () => ({
+  disabled: boolean("disabled", false, "gp1"),
+  size: select("size", sizeOpts, "normal", "gp1"),
+  radioColor: select("radioColor", colorOpts, "default", "gp1")
+});
+
+const groupProps = () => ({
+  orientation: select("orientation", orientationOpts, "vertical", "gp2")
+});
+
+const merge = (a, b) => ({ ...a, ...b });
+
+const createProps = useChildStyles =>
+  useChildStyles ? merge(groupProps(), overrideProps()) : groupProps();
+
 storiesOf("RadioGroup", module)
   .addDecorator(centerDecorator)
   .addDecorator(withKnobs)
   .add("Group - children", () => {
-    const useChildStyles = boolean("override child styles", false, "gp1")
-
-    const overrideProps = {
-      disabled: boolean("disabled", false, "gp1"),
-      size: select("size", sizeOpts, "normal", "gp1"),
-      radioColor: select("radioColor", colorOpts, "default", "gp1")
-    };
-
-    const props = useChildStyles ? overrideProps : {};
+    const useChildStyles = boolean("override child styles", false, "gp1");
+    const props = createProps(useChildStyles);
 
     return (
       <ManageState>
@@ -70,15 +83,8 @@ storiesOf("RadioGroup", module)
     );
   })
   .add("Group - options", () => {
-    const useChildStyles = boolean("override child styles", false, "gp1")
-
-    const overrideProps = {
-      disabled: boolean("disabled", false, "gp1"),
-      size: select("size", sizeOpts, "normal", "gp1"),
-      radioColor: select("radioColor", colorOpts, "default", "gp1")
-    };
-
-    const props = useChildStyles ? overrideProps : {};
+    const useChildStyles = boolean("override child styles", false, "gp1");
+    const props = createProps(useChildStyles);
 
     const radioOptions = [
       { text: "Option 1 (large)", value: 1, size: "large" },
