@@ -6,10 +6,10 @@ import {
   mainVariants,
   lighten,
   darken,
-  disabledColor,
-  compose2,
-  ifElse
+  disabledColor
 } from "../../themes/helpers";
+import { compose2, ifElse } from "../../utils";
+
 import { colorVariants } from "../../themes/commonVariants";
 
 const { btnColor, btnColorPropTypes } = mainVariants(
