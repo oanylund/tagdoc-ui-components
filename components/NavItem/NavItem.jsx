@@ -1,34 +1,24 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import theme from "styled-theming";
 import { ifElse } from "../../utils";
+import { variants } from "../../theme/helpers";
 
 const isActiveOrElse = ifElse(p => p.active);
 
-const backgroundColor = theme("mode", {
-  main: "none"
-});
-const backgroundColorHover = theme("mode", {
-  main: "rgba(255, 255, 255, 0.15)"
-});
-const backgroundColorActive = theme("mode", {
-  main: "rgba(0, 0, 0, 0.15)"
-});
+const backgroundColor = "none";
+const backgroundColorHover = "rgba(255, 255, 255, 0.15)";
+const backgroundColorActive = "rgba(0, 0, 0, 0.15)";
+
 const activeOrNormalBgColor = isActiveOrElse(
   backgroundColorActive,
   backgroundColor
 );
 
-const fontColor = theme("mode", {
-  main: "white"
-});
-const fontColorHover = theme("mode", {
-  main: "white"
-});
-const fontColorActive = theme("mode", {
-  main: "white"
-});
+const fontColor = "white";
+const fontColorHover = fontColor;
+const fontColorActive = fontColor;
+
 const activeOrNormalFontColor = isActiveOrElse(fontColorActive, fontColor);
 
 const NavItem = styled.a`

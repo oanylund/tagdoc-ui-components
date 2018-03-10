@@ -5,31 +5,25 @@ import styled, { css } from "styled-components";
 import {
   variants,
   getThemeProp,
-  getComponentThemePath,
   lighten,
   darken,
   disabledColor
 } from "../../theme/helpers";
-import { compose2, concat, prop, ifElse } from "../../utils";
+import { stateColorVariants } from "../../theme/selectors";
 
-const buttonThemePath = getComponentThemePath("button");
-const mainColors = compose2(
-  getThemeProp,
-  concat([...buttonThemePath, ])
-)
-const fontSizes = getSubProperty(buttonTheme(["fontSize"]));
+import { compose2, ifElse } from "../../utils";
 
 const btnColor = variants("btnColor", {
-  default: mainColors("default"),
-  success: mainColors("success"),
-  danger: mainColors("danger"),
-  warning: mainColors("warning")
+  default: stateColorVariants("default"),
+  success: stateColorVariants("success"),
+  danger: stateColorVariants("danger"),
+  warning: stateColorVariants("warning")
 });
 
 const fontSize = variants("btnSize", {
-  small: fontSizes("small"),
-  normal: fontSizes("normal"),
-  large: fontSizes("large")
+  small: "0.6em",
+  normal: "0.8em",
+  large: "1em"
 });
 
 const btnLightColor = compose2(lighten(0.2), btnColor);
@@ -38,22 +32,22 @@ const btnDisabledColor = compose2(disabledColor, btnColor);
 
 const ifActiveOrElse = ifElse(p => p.active);
 
-const backGroundColor = variants("btnStyle", {
+const backgroundColor = variants("btnStyle", {
   filled: ifActiveOrElse(btnDarkColor, btnColor),
   outlined: "transparent"
 });
 
-const backGroundColorHovered = variants("btnStyle", {
+const backgroundColorHovered = variants("btnStyle", {
   filled: ifActiveOrElse(btnDarkColor, btnLightColor),
   outlined: "transparent"
 });
 
-const backGroundColorActive = variants("btnStyle", {
+const backgroundColorActive = variants("btnStyle", {
   filled: btnDarkColor,
   outlined: "transparent"
 });
 
-const backGroundColorDisabled = variants("btnStyle", {
+const backgroundColorDisabled = variants("btnStyle", {
   filled: btnDisabledColor,
   outlined: "transparent"
 });
@@ -90,24 +84,24 @@ const Button = styled.button`
   justify-content: center;
   align-items: center;
 
-  background-color: ${backGroundColor};
+  background-color: ${backgroundColor};
   border-color: ${ifActiveOrElse(btnDarkColor, btnColor)};
   color: ${color};
 
   &:hover {
-    background-color: ${backGroundColorHovered};
+    background-color: ${backgroundColorHovered};
     border-color: ${ifActiveOrElse(btnDarkColor, btnLightColor)};
     color: ${colorHovered};
   }
 
   &:active {
-    background-color: ${backGroundColorActive};
+    background-color: ${backgroundColorActive};
     border-color: ${btnDarkColor};
     color: ${colorActive};
   }
 
   &:disabled {
-    background-color: ${backGroundColorDisabled};
+    background-color: ${backgroundColorDisabled};
     border-color: ${btnDisabledColor};
     color: ${colorDisabled};
 

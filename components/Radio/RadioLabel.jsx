@@ -1,15 +1,19 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import { darken, lighten, mainVariants } from "../../themes/helpers";
+import { darken, lighten, variants } from "../../theme/helpers";
+import { baseColor, stateColorVariants } from "../../theme/selectors";
 import { compose2 } from "../../utils";
-import { colorVariants } from "../../themes/commonVariants";
-import { mainBaseColor } from "../../themes/selectors";
 
 import RadioInput from "./RadioInput";
 
-const radioColor = mainVariants("radioColor", colorVariants);
+const radioColor = variants("radioColor", {
+  default: stateColorVariants("default"),
+  success: stateColorVariants("success"),
+  danger: stateColorVariants("danger"),
+  warning: stateColorVariants("warning")
+});
 
-const fontSize = mainVariants("size", {
+const fontSize = variants("size", {
   small: "0.75em",
   normal: "1em",
   large: "1.25em"

@@ -7,7 +7,7 @@ import Card from "./Card";
 
 storiesOf("Card", module)
   .addDecorator(centerDecorator)
-  .add("default", () => (
+  .add("Simple", () => (
     <div style={{ width: "400px" }}>
       <Card>Hello<br/>Cool</Card>
     </div>

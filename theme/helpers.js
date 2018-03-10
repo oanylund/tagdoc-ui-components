@@ -1,15 +1,10 @@
-import themes from "styled-theming";
 import { css } from "styled-components";
 import PropTypes from "prop-types";
 import Color from "color";
 import { compose2, prop, path } from "../utils";
 
-export const concat = a => b => [..a, ..b];
-
 export const getThemeProp = pathToProp => props =>
   path(pathToProp, props.theme);
-
-export const getComponentThemePath = component => ["components", component]
 
 export const variants = (prop, variants) => props => {
   const chosenVariant = props[prop];

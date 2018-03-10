@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
-import { cardBaseStyle } from '../../themes/selectors';
+import { cardBaseStyle } from '../../theme/selectors';
 
 const Card = styled.div`
   ${cardBaseStyle}

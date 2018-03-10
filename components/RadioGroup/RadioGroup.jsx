@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
+import { variants } from "../../theme/helpers";
 import { notUndefOrElse } from "../../utils";
-import Radio, { radioPropTypes } from "../Radio/Radio";
-import { mainVariants } from "../../themes/helpers";
 
-const orientationStyle = mainVariants("orientation", {
+import Radio, { radioPropTypes } from "../Radio/Radio";
+
+const orientationStyle = variants("orientation", {
   vertical: css``,
   horizontal: css`
     & > li {

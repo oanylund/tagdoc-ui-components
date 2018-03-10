@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
-import { mainBaseColor } from '../../themes/selectors';
+import { baseColor } from '../../theme/selectors';
 
 const Navbar = styled.nav`
-    background: ${mainBaseColor};
+    background: ${baseColor};
     display: flex;
     height: 40px;
 `;

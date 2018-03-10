@@ -1,11 +1,9 @@
-import components from "./components";
-
 const primaryColors = {
   base: "#215DE0",
 }
 
 const colorVariants = {
-  variants: {
+  stateVariants: {
     default: primaryColors.base,
     success: "green",
     danger: "red",
@@ -26,7 +24,6 @@ export const styles = {
 };
 
 const defaultTheme = {
-  components,
   colors,
   styles
 };
