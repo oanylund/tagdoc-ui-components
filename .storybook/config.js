@@ -1,6 +1,6 @@
 import { configure, addDecorator } from "@storybook/react";
 import withThemeProvider from "./decorators/withThemeProvider";
-import mainTheme from '../themes/main';
+import defaultTheme from '../theme';
 import { injectGlobal } from 'styled-components';
 
 injectGlobal`
@@ -35,6 +35,6 @@ function loadStories() {
   req.keys().forEach(filename => req(filename));
 }
 
-addDecorator(withThemeProvider({ mode: "main", main: mainTheme }));
+addDecorator(withThemeProvider(defaultTheme));
 
 configure(loadStories, module);

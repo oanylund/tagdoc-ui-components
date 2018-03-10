@@ -3,30 +3,34 @@ import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 
 import {
-  mainVariants,
+  variants,
+  getThemeProp,
+  getComponentThemePath,
   lighten,
   darken,
   disabledColor
-} from "../../themes/helpers";
-import { compose2, ifElse } from "../../utils";
+} from "../../theme/helpers";
+import { compose2, concat, prop, ifElse } from "../../utils";
 
-import { colorVariants } from "../../themes/commonVariants";
+const buttonThemePath = getComponentThemePath("button");
+const mainColors = compose2(
+  getThemeProp,
+  concat([...buttonThemePath, ])
+)
+const fontSizes = getSubProperty(buttonTheme(["fontSize"]));
 
-const [btnColor, btnColorPropTypes] = mainVariants(
-  "btnColor",
-  colorVariants,
-  true
-);
+const btnColor = variants("btnColor", {
+  default: mainColors("default"),
+  success: mainColors("success"),
+  danger: mainColors("danger"),
+  warning: mainColors("warning")
+});
 
-const [fontSize, btnSizePropTypes] = mainVariants(
-  "btnSize",
-  {
-    small: "0.6em",
-    normal: "0.8em",
-    large: "1em"
-  },
-  true
-);
+const fontSize = variants("btnSize", {
+  small: fontSizes("small"),
+  normal: fontSizes("normal"),
+  large: fontSizes("large")
+});
 
 const btnLightColor = compose2(lighten(0.2), btnColor);
 const btnDarkColor = compose2(darken(0.2), btnColor);
@@ -34,46 +38,42 @@ const btnDisabledColor = compose2(disabledColor, btnColor);
 
 const ifActiveOrElse = ifElse(p => p.active);
 
-const [backGroundColor, btnStylePropTypes] = mainVariants(
-  "btnStyle",
-  {
-    filled: ifActiveOrElse(btnDarkColor, btnColor),
-    outlined: "transparent"
-  },
-  true
-);
+const backGroundColor = variants("btnStyle", {
+  filled: ifActiveOrElse(btnDarkColor, btnColor),
+  outlined: "transparent"
+});
 
-const backGroundColorHovered = mainVariants("btnStyle", {
+const backGroundColorHovered = variants("btnStyle", {
   filled: ifActiveOrElse(btnDarkColor, btnLightColor),
   outlined: "transparent"
 });
 
-const backGroundColorActive = mainVariants("btnStyle", {
+const backGroundColorActive = variants("btnStyle", {
   filled: btnDarkColor,
   outlined: "transparent"
 });
 
-const backGroundColorDisabled = mainVariants("btnStyle", {
+const backGroundColorDisabled = variants("btnStyle", {
   filled: btnDisabledColor,
   outlined: "transparent"
 });
 
-const color = mainVariants("btnStyle", {
+const color = variants("btnStyle", {
   filled: "white",
   outlined: ifActiveOrElse(btnDarkColor, btnColor)
 });
 
-const colorHovered = mainVariants("btnStyle", {
+const colorHovered = variants("btnStyle", {
   filled: "white",
   outlined: ifActiveOrElse(btnDarkColor, btnLightColor)
 });
 
-const colorActive = mainVariants("btnStyle", {
+const colorActive = variants("btnStyle", {
   filled: "white",
   outlined: btnDarkColor
 });
 
-const colorDisabled = mainVariants("btnStyle", {
+const colorDisabled = variants("btnStyle", {
   filled: "white",
   outlined: btnDisabledColor
 });
@@ -117,9 +117,9 @@ const Button = styled.button`
 `;
 
 Button.propTypes = {
-  btnColor: btnColorPropTypes,
-  btnSize: btnSizePropTypes,
-  btnStyle: btnStylePropTypes,
+  btnColor: PropTypes.oneOf(["default", "success", "danger", "warning"]),
+  btnSize: PropTypes.oneOf(["small", "normal", "large"]),
+  btnStyle: PropTypes.oneOf(["filled", "outlined"]),
   active: PropTypes.bool,
   disabled: PropTypes.bool
 };
