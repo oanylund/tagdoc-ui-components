@@ -28,7 +28,10 @@ export const ifElse = predicate => (tru, fals) => props =>
     ? callWithPropsIfFunction(tru, props)
     : callWithPropsIfFunction(fals, props);
 
-export const whenTrueApplyStyles = predicate => (...styles) => props =>
+export const whenTrueApplyStyles = (predicate, styles) => props =>
+  predicate(props) ? styles : null;
+
+export const whenTrueApplyStylesInline = predicate => (...styles) => props =>
   predicate(props) ? css(...styles) : null;
 
 export const notUndefOrElse = (thisOne, thatOne) =>
