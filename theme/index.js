@@ -3,6 +3,12 @@ const primaryColors = {
 }
 
 const colorVariants = {
+  grayVariants: {
+    light: "#D4D4D4",
+    lighter: "#ADAAAA",
+    middle: "#737373",
+    darker: "#404040"
+  },
   stateVariants: {
     default: primaryColors.base,
     success: "green",

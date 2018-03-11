@@ -9,3 +9,8 @@ export const stateColorVariants = compose2(
   getThemeProp,
   appendTo(["colors", "stateVariants"])
 );
+
+export const grayColorVariants = compose2(
+  getThemeProp,
+  appendTo(["colors", "grayVariants"])
+);
