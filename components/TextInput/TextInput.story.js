@@ -16,7 +16,7 @@ storiesOf("TextInput", module)
   .addDecorator(withKnobs)
   .addDecorator(centerDecorator)
   .add("Props", () => {
-    const colorOpts = {
+    const inputStateOpts = {
       default: "default",
       success: "success",
       danger: "danger",
@@ -34,6 +34,7 @@ storiesOf("TextInput", module)
       label: text("label", "label", "gp1"),
       placeholder: text("placeholder", "I am a placeholder", "gp1"),
       size: select("size", sizeOpts, "normal", "gp1"),
+      inputState: select("inputState", inputStateOpts, "default", "gp1"),
       expandOnFocus: boolean("expandOnFocus", false, "gp1"),
       disabled: boolean("disabled", false, "gp1"),
       showBorderBottom: boolean("showBorderBottom", true, "gp1"),

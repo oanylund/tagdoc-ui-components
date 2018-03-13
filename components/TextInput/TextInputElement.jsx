@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
-import { grayColorVariants } from "../../theme/selectors";
-import { whenTrueApplyStyles, ifElse } from "../../utils";
+import { disabledColor, variants } from "../../theme/helpers";
+import { compose2, whenTrueApplyStyles, ifElse } from "../../utils";
+import { stateColorVariants, grayColorVariants } from "../../theme/selectors";
 
 const expandStyles = css`
   transition: all 0.3s;
@@ -22,7 +23,16 @@ const placeholderColor = ifDisabledOrElse(
   grayColorVariants("middle")
 );
 
-const textColor = ifDisabledOrElse(grayColorVariants("middle"), "black");
+const notDisabledTextColor = variants("inputState", {
+  default: "black",
+  success: stateColorVariants("success"),
+  danger: stateColorVariants("danger"),
+  warning: stateColorVariants("warning")
+});
+const textColor = ifDisabledOrElse(
+  compose2(disabledColor, notDisabledTextColor),
+  notDisabledTextColor
+);
 
 const hideBorderBottomStyle = `
     &:hover, &:focus {
@@ -30,7 +40,7 @@ const hideBorderBottomStyle = `
     }
 `;
 const hideBorderBottom = whenTrueApplyStyles(
-  p => !p.showBorderBottom,
+  p => !p.showBorderBottom || p.disabled,
   hideBorderBottomStyle
 );
 

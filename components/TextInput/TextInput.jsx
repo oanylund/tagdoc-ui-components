@@ -3,11 +3,18 @@ import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 import { variants } from "../../theme/helpers";
 import { ifElse } from "../../utils";
-import { grayColorVariants } from "../../theme/selectors";
+import { stateColorVariants, grayColorVariants } from "../../theme/selectors";
 
 import TextInputElement from "./TextInputElement";
 
 let nextId = 0;
+
+const labelColor = variants("inputState", {
+  default: grayColorVariants("darker"),
+  success: stateColorVariants("success"),
+  danger: stateColorVariants("danger"),
+  warning: stateColorVariants("warning")
+});
 
 const fontSize = variants("size", {
   small: "0.9em",
@@ -15,9 +22,8 @@ const fontSize = variants("size", {
   large: "1.2em"
 });
 
-const ifExpandOnFocusOrElse = ifElse(p => p.expandOnFocus);
-
 const ifLabelExistsOrElse = ifElse(p => p.label);
+const ifExpandOnFocusOrElse = ifElse(p => p.expandOnFocus);
 
 const height = ifLabelExistsOrElse(
   ifExpandOnFocusOrElse("3.065em", "auto"),
@@ -34,7 +40,7 @@ const TextInputStyled = styled.div`
 
   & > label {
     font-size: 0.79em;
-    color: ${grayColorVariants("darker")};
+    color: ${labelColor};
     user-select: none;
     pointer-events: none;
     text-transform: capitalize;
@@ -59,12 +65,13 @@ class TextInput extends Component {
       inputRef,
       ...inputElementProps
     } = this.props;
-    const { expandOnFocus } = inputElementProps;
+    const { expandOnFocus, inputState } = inputElementProps;
 
     return (
       <TextInputStyled
         className={className}
         size={size}
+        inputState={inputState}
         label={label}
         expandOnFocus={expandOnFocus}
       >
@@ -87,7 +94,8 @@ TextInput.propTypes = {
   showBorderBottom: PropTypes.bool,
   inputRef: PropTypes.func,
   onChange: PropTypes.func,
-  size: PropTypes.oneOf(["small", "normal", "large"])
+  size: PropTypes.oneOf(["small", "normal", "large"]),
+  inputState: PropTypes.oneOf(["default", "success", "danger", "warning"])
 };
 
 TextInput.defaultProps = {
@@ -95,6 +103,7 @@ TextInput.defaultProps = {
   disabled: false,
   showBorderBottom: true,
   size: "normal",
+  inputState: "default",
   spellCheck: false
 };
 
