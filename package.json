@@ -12,14 +12,12 @@
     "@storybook/react": "3.3.10",
     "babel-core": "6.26.0",
     "plop": "1.9.1",
-    "react": "16.2.0",
-    "react-dom": "16.2.0",
-    "styled-components": "3.1.6",
     "typescript": "2.7.2",
     "typescript-styled-plugin": "0.6.0"
   },
   "peerDependencies": {
     "react": "16.2.0",
+    "react-dom": "16.2.0",
     "styled-components": "3.1.6"
   },
   "dependencies": {
