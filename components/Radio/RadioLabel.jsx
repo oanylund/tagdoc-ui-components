@@ -2,7 +2,7 @@ import React from "react";
 import styled, { css } from "styled-components";
 import { darken, lighten, variants } from "../../theme/helpers";
 import { baseColor, stateColorVariants } from "../../theme/selectors";
-import { compose2 } from "../../utils";
+import { compose2, whenTrueApplyStyles } from "../../utils";
 
 import RadioInput from "./RadioInput";
 
@@ -19,15 +19,25 @@ const fontSize = variants("size", {
   large: "1.25em"
 });
 
+const noText = p => !p.children;
+const noTextStyles = `
+    width: 1em;
+    height: 1em;
+    padding-left: 0;
+    margin: 0;
+`;
+const whenNoText = whenTrueApplyStyles(noText, noTextStyles);
+
 const RadioLabel = styled.label`
   position: relative;
   padding-left: 1.75em;
   margin: 0.2em 0;
   cursor: pointer;
   line-height: 1em;
-  display: inline-block;
+  display: block;
   color: black;
   font-size: ${fontSize};
+  ${whenNoText};
 
   &:before {
     content: "";

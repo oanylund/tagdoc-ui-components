@@ -18,8 +18,7 @@ class Radio extends Component {
     this._handleChange = this._handleChange.bind(this);
   }
   _handleChange(e) {
-    if(this.props.onChange)
-      this.props.onChange(this.props.value);
+    if (this.props.onChange) this.props.onChange(this.props.value);
   }
   render() {
     const {
