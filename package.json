@@ -1,17 +1,24 @@
 {
-  "name": "descriptor-components",
-  "version": "1.0.0",
+  "name": "tagdoc-ui-components",
+  "version": "0.0.0-semanticallyreleased",
   "main": "index.js",
   "author": "'Ole-Andreas <'ole.a.nylund@gmail.com'>",
   "license": "MIT",
   "scripts": {
-    "storybook": "start-storybook -p 9001 -c .storybook -s ./static"
+    "storybook": "start-storybook -p 9001 -c .storybook -s ./static",
+    "travis-deploy-once": "travis-deploy-once",
+    "semantic-release": "semantic-release",
+    "commit": "git-cz"
   },
   "devDependencies": {
     "@storybook/addon-knobs": "3.3.14",
     "@storybook/react": "3.3.10",
     "babel-core": "6.26.0",
+    "commitizen": "2.9.6",
+    "cz-conventional-changelog": "2.1.0",
     "plop": "1.9.1",
+    "semantic-release": "^15.1.2",
+    "travis-deploy-once": "^4.4.1",
     "typescript": "2.7.2",
     "typescript-styled-plugin": "0.6.0"
   },
@@ -22,5 +29,14 @@
   },
   "dependencies": {
     "color": "3.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/oanylund/tagdoc-ui-components.git"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-conventional-changelog"
+    }
   }
 }
