@@ -13,6 +13,13 @@ import SubNavItem from "./components/SubNavItem/SubNavItem";
 import TextInput from "./components/TextInput/TextInput";
 import Title from "./components/Title/Title";
 
+// HOCs
+import withSelectableBackground from "./hoc/withSelectableBackground";
+
+// Theme
+import defaultTheme from "./theme";
+import ThemeProvider from "./theme/ThemeProvider";
+
 export default {
   Button,
   Card,
@@ -26,5 +33,8 @@ export default {
   SubNavbar,
   SubNavItem,
   TextInput,
-  Title
+  Title,
+  ThemeProvider,
+  withSelectableBackground,
+  defaultTheme
 };
