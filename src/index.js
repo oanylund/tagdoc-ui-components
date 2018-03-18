@@ -1,40 +1,11 @@
 // Components
-import Button from "./components/Button/Button";
-import Card from "./components/Card/Card";
-import Checkbox from "./components/Checkbox/Checkbox";
-import Modal from "./components/Modal/Modal";
-import Navbar from "./components/Navbar/Navbar";
-import NavItem from "./components/NavItem/NavItem";
-import Portal from "./components/Portal/Portal";
-import Radio from "./components/Radio/Radio";
-import RadioGroup from "./components/RadioGroup/RadioGroup";
-import SubNavbar from "./components/SubNavbar/SubNavbar";
-import SubNavItem from "./components/SubNavItem/SubNavItem";
-import TextInput from "./components/TextInput/TextInput";
-import Title from "./components/Title/Title";
+export * from "./components";
 
 // HOCs
-import withSelectableBackground from "./hoc/withSelectableBackground";
+export {
+  default as withSelectableBackground
+} from "./hoc/withSelectableBackground";
 
 // Theme
-import defaultTheme from "./theme";
-import ThemeProvider from "./theme/ThemeProvider";
-
-export default {
-  Button,
-  Card,
-  Checkbox,
-  Modal,
-  Navbar,
-  NavItem,
-  Portal,
-  Radio,
-  RadioGroup,
-  SubNavbar,
-  SubNavItem,
-  TextInput,
-  Title,
-  ThemeProvider,
-  withSelectableBackground,
-  defaultTheme
-};
+export { default as defaultTheme } from "./theme";
+export { default as ThemeProvider } from "./theme/ThemeProvider";
