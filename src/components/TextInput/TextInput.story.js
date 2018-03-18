@@ -2,7 +2,7 @@ import React from "react";
 import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import { withKnobs, boolean, text, select } from "@storybook/addon-knobs/react";
-import centerDecorator from "../../.storybook/decorators/centerDecorator";
+import centerDecorator from "../../../.storybook/decorators/centerDecorator";
 
 import Card from "../Card/Card";
 import TextInput from "./TextInput";

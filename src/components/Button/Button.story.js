@@ -2,7 +2,7 @@ import React from "react";
 import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import { withKnobs, boolean, text, select } from "@storybook/addon-knobs/react";
-import centerDecorator from "../../.storybook/decorators/centerDecorator";
+import centerDecorator from "../../../.storybook/decorators/centerDecorator";
 
 import Button from "./Button";
 
@@ -20,13 +20,13 @@ storiesOf("Buttons", module)
     const sizeOpts = {
       small: "small",
       normal: "normal",
-      "large": "large"
+      large: "large"
     };
 
     const styleOpts = {
       filled: "filled",
       outlined: "outlined"
-    }
+    };
 
     const props = {
       btnColor: select("btnColor", colorOpts, "default", "gp1"),

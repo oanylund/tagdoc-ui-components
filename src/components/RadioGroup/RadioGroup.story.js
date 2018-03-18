@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
-import centerDecorator from "../../.storybook/decorators/centerDecorator";
+import centerDecorator from "../../../.storybook/decorators/centerDecorator";
 import { withKnobs, boolean, text, select } from "@storybook/addon-knobs/react";
 import RadioGroup from "./RadioGroup";
 import Radio from "../Radio/Radio";

@@ -2,11 +2,11 @@ import React from "react";
 import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import { withKnobs, boolean, text, select } from "@storybook/addon-knobs/react";
-import centerDecorator from "../../.storybook/decorators/centerDecorator";
+import centerDecorator from "../../../.storybook/decorators/centerDecorator";
 
-import Checkbox from "./Checkbox";
+import Radio from "./Radio";
 
-storiesOf("Checkbox", module)
+storiesOf("Radio", module)
   .addDecorator(withKnobs)
   .addDecorator(centerDecorator)
   .add("Props", () => {
@@ -31,8 +31,8 @@ storiesOf("Checkbox", module)
       onChange: action("onChange"),
       // Variants
       size: select("size", sizeOpts, "normal", "gp1"),
-      checkboxColor: select("checkboxColor", colorOpts, "default", "gp1")
+      radioColor: select("radioColor", colorOpts, "default", "gp1")
     };
 
-    return <Checkbox {...props} groupName="cbox" />;
+    return <Radio {...props} groupName="radio-group" />;
   });

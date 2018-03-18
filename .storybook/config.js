@@ -1,7 +1,7 @@
 import { configure, addDecorator } from "@storybook/react";
 import withThemeProvider from "./decorators/withThemeProvider";
-import defaultTheme from '../theme';
-import { injectGlobal } from 'styled-components';
+import defaultTheme from "../src/theme";
+import { injectGlobal } from "styled-components";
 
 injectGlobal`
 @font-face {
@@ -28,8 +28,7 @@ body {
 }
 `;
 
-
-const req = require.context("../components", true, /.story.jsx?$/);
+const req = require.context("../src/components", true, /.story.jsx?$/);
 
 function loadStories() {
   req.keys().forEach(filename => req(filename));

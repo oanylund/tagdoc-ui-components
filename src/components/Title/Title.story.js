@@ -1,7 +1,7 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
-import centerDecorator from "../../.storybook/decorators/centerDecorator";
+import centerDecorator from "../../../.storybook/decorators/centerDecorator";
 
 import Title from "./Title";
 
