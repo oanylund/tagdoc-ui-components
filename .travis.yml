@@ -6,8 +6,8 @@ notifications:
   email: false
 
 branches:
-  except:
-    - /^v\d+\.\d+\.\d+$/
+  only:
+    - master
 
 node_js: 8
 
