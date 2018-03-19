@@ -9,9 +9,28 @@ branches:
   only:
     - master
 
-node_js: 8
+node_js: 
+  - '8'
+  - '9'
 
-script: yarn semantic-release
+script: yarn build
 
-after_success: 
-  - yarn deploy-storybook --ci
+jobs:
+  include:
+    - stage: release
+      node_js: lts/*
+      script: skip
+      deploy:
+        provider: script
+        skip_cleanup: true
+        script:
+          - yarn semantic-release
+    - stage: deploy
+      node_js: lts/*
+      script: skip
+      deploy:
+        provider: script
+        skip_cleanup: true
+        script:
+          - yarn deploy-storybook --ci        
+
