@@ -1,0 +1,4 @@
+{
+  "presets": [["env", {"modules": false}], "react"],
+  "plugins": ["styled-components", "transform-object-rest-spread"]
+}
