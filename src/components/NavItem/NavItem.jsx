@@ -21,6 +21,8 @@ const fontColorActive = fontColor;
 
 const activeOrNormalFontColor = isActiveOrElse(fontColorActive, fontColor);
 
+const activeClassName = p => p.activeClassName;
+
 const NavItem = styled.a`
   padding: 0 1em;
   display: flex;
@@ -44,18 +46,21 @@ const NavItem = styled.a`
     color: ${fontColorHover};
   }
 
-  &:active {
+  &:active,
+  &.${activeClassName} {
     background: ${backgroundColorActive};
     color: ${fontColorActive};
   }
 `;
 
 NavItem.propTypes = {
-  active: PropTypes.bool
+  active: PropTypes.bool,
+  activeClassName: PropTypes.string
 };
 
 NavItem.defaultProps = {
-  active: false
+  active: undefined,
+  activeClassName: "active"
 };
 
 export default NavItem;
