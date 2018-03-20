@@ -15,6 +15,8 @@ const fontColorHover = baseColor;
 const fontColorActive = baseColor;
 const activeOrNormalFontColor = isActiveOrElse(fontColorActive, fontColor);
 
+const activeClassName = p => p.activeClassName;
+
 const SubNavItem = styled.a`
   padding: 0 1em;
   display: flex;
@@ -38,18 +40,21 @@ const SubNavItem = styled.a`
     color: ${fontColorHover};
   }
 
-  &:active {
+  &:active,
+  &.${activeClassName} {
     background: ${backgroundColorActive};
     color: ${fontColorActive};
   }
 `;
 
 SubNavItem.propTypes = {
-  active: PropTypes.bool
+  active: PropTypes.bool,
+  activeClassName: PropTypes.string
 };
 
 SubNavItem.defaultProps = {
-  active: false
+  active: undefined,
+  activeClassName: "active"
 };
 
 export default SubNavItem;
