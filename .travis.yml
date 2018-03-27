@@ -26,7 +26,7 @@ jobs:
         script: yarn semantic-release
 
     - stage: deploy storybook
-      if: type = push
+      if: type != push
       node_js: lts/*
       script: yarn deploy-storybook --ci
 
