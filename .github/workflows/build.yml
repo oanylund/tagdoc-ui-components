@@ -33,6 +33,6 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Deploy Storybook to gh-pages
-      run: yarn deploy-storybook --ci
+        run: yarn deploy-storybook --ci
         env:
           GH_TOKEN: ${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}
