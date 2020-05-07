@@ -8,21 +8,28 @@ on:
 jobs:
   release:
     name: Release
+    
     runs-on: ubuntu-18.04
+    
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Setup Node.js
+    
+      - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
           node-version: 12
+      
       - name: Install dependencies
         run: yarn install --frozen-lockfile
+      
       - name: Build dist
         run: yarn build
+      
       - name: Release
         run: npx semantic-release
         env: GITHUB_TOKEN ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN ${{ secrets.NPM_TOKEN }}
+      
       - name: Deploy Storybook to gh-pages
         run: yarn deploy-storybook --ci
