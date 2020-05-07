@@ -3,7 +3,7 @@
     "plugins": [
       {
         "name": "typescript-styled-plugin",
-        "tags": ["styled", "css", "extend", "onlyWhenNotActive"]
+        "tags": ["styled", "css", "onlyWhenNotActive"]
       }
     ]
   }

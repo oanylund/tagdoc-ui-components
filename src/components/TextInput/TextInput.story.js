@@ -1,14 +1,15 @@
 import React from "react";
+import styled from "styled-components";
 import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
-import { withKnobs, boolean, text, select } from "@storybook/addon-knobs/react";
+import { withKnobs, boolean, text, select } from "@storybook/addon-knobs";
 import centerDecorator from "../../../.storybook/decorators/centerDecorator";
 
 import Card from "../Card/Card";
 import TextInput from "./TextInput";
 import Title from "../Title/Title";
 
-const FixedCard = Card.extend`
+const FixedCard = styled(Card)`
   width: 500px;
 `;
 
@@ -30,14 +31,14 @@ storiesOf("TextInput", module)
     };
 
     const props = {
-      value: text("value", "", "gp1"),
-      label: text("label", "label", "gp1"),
-      placeholder: text("placeholder", "I am a placeholder", "gp1"),
-      size: select("size", sizeOpts, "normal", "gp1"),
-      inputState: select("inputState", inputStateOpts, "default", "gp1"),
-      expandOnFocus: boolean("expandOnFocus", false, "gp1"),
-      disabled: boolean("disabled", false, "gp1"),
-      showBorderBottom: boolean("showBorderBottom", true, "gp1"),
+      value: text("value", ""),
+      label: text("label", "label"),
+      placeholder: text("placeholder", "I am a placeholder"),
+      size: select("size", sizeOpts, "normal"),
+      inputState: select("inputState", inputStateOpts, "default"),
+      expandOnFocus: boolean("expandOnFocus", false),
+      disabled: boolean("disabled", false),
+      showBorderBottom: boolean("showBorderBottom", true),
       onChange: action("onChange")
     };
     return (

@@ -44,25 +44,25 @@ const orientationOpts = {
 };
 
 const overrideProps = () => ({
-  disabled: boolean("disabled", false, "gp1"),
-  size: select("size", sizeOpts, "normal", "gp1"),
-  radioColor: select("radioColor", colorOpts, "default", "gp1")
+  disabled: boolean("disabled", false),
+  size: select("size", sizeOpts, "normal"),
+  radioColor: select("radioColor", colorOpts, "default")
 });
 
 const groupProps = () => ({
-  orientation: select("orientation", orientationOpts, "vertical", "gp2")
+  orientation: select("orientation", orientationOpts, "vertical")
 });
 
 const merge = (a, b) => ({ ...a, ...b });
 
-const createProps = useChildStyles =>
+const createProps = (useChildStyles) =>
   useChildStyles ? merge(groupProps(), overrideProps()) : groupProps();
 
 storiesOf("RadioGroup", module)
   .addDecorator(centerDecorator)
   .addDecorator(withKnobs)
   .add("Group - children", () => {
-    const useChildStyles = boolean("override child styles", false, "gp1");
+    const useChildStyles = boolean("override child styles", false);
     const props = createProps(useChildStyles);
 
     return (
@@ -83,7 +83,7 @@ storiesOf("RadioGroup", module)
     );
   })
   .add("Group - options", () => {
-    const useChildStyles = boolean("override child styles", false, "gp1");
+    const useChildStyles = boolean("override child styles", false);
     const props = createProps(useChildStyles);
 
     const radioOptions = [

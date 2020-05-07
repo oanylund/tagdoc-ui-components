@@ -1,7 +1,7 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
-import { withKnobs, boolean, text, select } from "@storybook/addon-knobs/react";
+import { withKnobs, boolean, text, select } from "@storybook/addon-knobs";
 import centerDecorator from "../../../.storybook/decorators/centerDecorator";
 
 import Button from "./Button";
@@ -29,14 +29,14 @@ storiesOf("Buttons", module)
     };
 
     const props = {
-      btnColor: select("btnColor", colorOpts, "default", "gp1"),
-      btnSize: select("btnSize", sizeOpts, "normal", "gp1"),
-      btnStyle: select("btnStyle", styleOpts, "outlined", "gp1"),
-      active: boolean("active", false, "gp1"),
-      disabled: boolean("disabled", false, "gp1")
+      btnColor: select("btnColor", colorOpts, "default"),
+      btnSize: select("btnSize", sizeOpts, "normal"),
+      btnStyle: select("btnStyle", styleOpts, "outlined"),
+      active: boolean("active", false),
+      disabled: boolean("disabled", false)
     };
 
-    const btnText = text("Button text", "Button", "gp2");
+    const btnText = text("Button text", "Button");
 
     return (
       <Button {...props} onClick={action("onClick")}>

@@ -13,36 +13,41 @@
     "build": "webpack --mode production"
   },
   "devDependencies": {
-    "@storybook/addon-knobs": "3.3.14",
-    "@storybook/react": "3.3.10",
-    "@storybook/storybook-deployer": "2.3.0",
-    "babel-core": "6.26.0",
-    "babel-loader": "7.1.4",
-    "babel-plugin-styled-components": "1.5.1",
-    "babel-plugin-transform-object-rest-spread": "6.26.0",
-    "babel-preset-env": "1.6.1",
-    "babel-preset-react": "6.24.1",
-    "commitizen": "2.9.6",
-    "cz-conventional-changelog": "2.1.0",
-    "plop": "1.9.1",
-    "react": "16.2.0",
-    "react-dom": "16.2.0",
-    "semantic-release": "^15.1.2",
-    "styled-components": "3.1.6",
-    "typescript": "2.7.2",
-    "typescript-styled-plugin": "0.6.0",
-    "webpack": "4.1.1",
-    "webpack-cli": "2.0.12"
+    "@babel/core": "^7.9.6",
+    "@babel/plugin-proposal-object-rest-spread": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "@babel/preset-react": "^7.9.4",
+    "@storybook/addon-actions": "^5.3.18",
+    "@storybook/addon-knobs": "5.3.18",
+    "@storybook/addon-links": "^5.3.18",
+    "@storybook/addons": "^5.3.18",
+    "@storybook/react": "^5.3.18",
+    "@storybook/storybook-deployer": "2.8.5",
+    "babel-loader": "8.1.0",
+    "babel-plugin-styled-components": "1.10.7",
+    "commitizen": "4.1.2",
+    "cz-conventional-changelog": "3.2.0",
+    "plop": "2.6.0",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "semantic-release": "^17.0.7",
+    "styled-components": "5.1.0",
+    "typescript": "3.8.3",
+    "typescript-styled-plugin": "0.15.0",
+    "webpack": "4.43.0",
+    "webpack-cli": "3.3.11"
   },
   "peerDependencies": {
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "styled-components": "^3.1.6"
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "styled-components": "^5.1.0"
   },
   "dependencies": {
-    "color": "^3.0.0"
+    "color": "^3.1.2"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/oanylund/tagdoc-ui-components.git"
@@ -51,5 +56,8 @@
     "commitizen": {
       "path": "node_modules/cz-conventional-changelog"
     }
+  },
+  "prettier": {
+    "trailingComma": "none"
   }
 }

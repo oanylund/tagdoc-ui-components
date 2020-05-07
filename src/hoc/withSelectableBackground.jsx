@@ -1,17 +1,16 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { whenTrueApplyStylesInline, notUndefOrElse, compose2 } from "../utils";
 import { lighten } from "../theme/helpers";
 import { baseColor, grayColorVariants } from "../theme/selectors";
 
-const isSelected = p => p.selected;
+const isSelected = (p) => p.selected;
 const whenSelected = whenTrueApplyStylesInline(isSelected);
 
-const withSelectableBackground = (
-  bgColor,
-  borderHoverColor
-) => WrappedStyledComponent => {
+const withSelectableBackground = (bgColor, borderHoverColor) => (
+  WrappedStyledComponent
+) => {
   const backgroundColor = notUndefOrElse(
     bgColor,
     compose2(lighten(0.6), baseColor)
@@ -21,7 +20,7 @@ const withSelectableBackground = (
     grayColorVariants("lighter")
   );
 
-  const SelectableComponent = WrappedStyledComponent.extend`
+  const SelectableComponent = styled(WrappedStyledComponent)`
     ${whenSelected`background-color: ${backgroundColor}`};
     border: 1px solid transparent;
     cursor: pointer;

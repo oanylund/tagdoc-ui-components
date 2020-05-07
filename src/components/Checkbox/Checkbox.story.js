@@ -24,14 +24,14 @@ storiesOf("Checkbox", module)
     };
 
     const props = {
-      text: text("text", "Option 1", "gp1"),
-      value: text("value", "amazing", "gp1"),
-      checked: boolean("checked", false, "gp1"),
-      disabled: boolean("disabled", false, "gp1"),
+      text: text("text", "Option 1"),
+      value: text("value", "amazing"),
+      checked: boolean("checked", false),
+      disabled: boolean("disabled", false),
       onChange: action("onChange"),
       // Variants
-      size: select("size", sizeOpts, "normal", "gp1"),
-      checkboxColor: select("checkboxColor", colorOpts, "default", "gp1")
+      size: select("size", sizeOpts, "normal"),
+      checkboxColor: select("checkboxColor", colorOpts, "default")
     };
 
     return <Checkbox {...props} groupName="cbox" />;
